@@ -1,17 +1,17 @@
 import streamlit as st
 
-def check_user_input(input):
+def check_number(input):
     try:
         # Convert it into integer
         val = int(input)
-        print("Input is an integer number. Number = ", val)
+        return True
     except ValueError:
         try:
             # Convert it into float
             val = float(input)
-            print("Input is a float  number. Number = ", val)
+            return True
         except ValueError:
-            print("No.. input is not a number. It's a string")
+            return False
 
 production_values = {
     "All local production (100%)": 1.0, 
@@ -80,11 +80,14 @@ with col1:
 
     # button magic
     if st.button("Compute", type="primary", use_container_width=True):
-        production_weight = float(production_weight)/100.0
-        material_weight = float(material_weight)/100.0
-        overheads_margins_weight = float(overheads_margins_weight)/100.0
-        if (production_weight)+(material_weight)+(overheads_margins_weight) != 1.0:
-            col1.markdown('Please ensure that the percentages add up to a 100')
+        if check_number(production_weight) and check_number(material_weight) and check_number(overheads_margins_weight):
+            production_weight = float(production_weight)/100.0
+            material_weight = float(material_weight)/100.0
+            overheads_margins_weight = float(overheads_margins_weight)/100.0
+            if (production_weight)+(material_weight)+(overheads_margins_weight) != 1.0:
+                col1.markdown('Please ensure that the percentages add up to a 100')
+            else:
+                local_content_value = float((production_weight * production_level) + (material_weight * material_level) + (overheads_margins_weight * 1))
+                col2.markdown(f'# Final Percentage: {round(local_content_value * 100, 2)}%')
         else:
-            local_content_value = float((production_weight * production_level) + (material_weight * material_level) + (overheads_margins_weight * 1))
-            col2.markdown(f'# Final Percentage: {local_content_value * 100}%')
+            col1.markdown('Please enter numbers for percentages')
