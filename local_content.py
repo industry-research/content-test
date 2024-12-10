@@ -29,7 +29,7 @@ material_values = {
     "No local materials (0%)": 0.0,
 }
  
-st.title("⭐⭐ Content Calc ⭐⭐")
+st.title("ICNVic - Local Content Calculator - External Version")
 
 # creates a horizontal line
 st.write("---")
@@ -44,18 +44,18 @@ col1, col2 = st.columns(2)
 with col1:
     # input 1
     production_level = production_values[st.selectbox(
-        "First question",
+        "What 'production' is local?",
         (production_values.keys()),
     )]
 
     # input 2
     material_level = material_values[st.selectbox(
-        "Second question",
+        "What 'materials level' is local?",
         (material_values.keys()),
     )]
 
     # inputs 3
-    st.caption("Third question")
+    st.caption("Ratios of item's cost:")
     
     production_weight = st.text_input(
         "Production (percentage)",
