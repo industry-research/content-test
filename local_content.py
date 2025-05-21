@@ -84,10 +84,12 @@ with col1:
             production_weight = float(production_weight)/100.0
             material_weight = float(material_weight)/100.0
             overheads_margins_weight = float(overheads_margins_weight)/100.0
-            if (production_weight)+(material_weight)+(overheads_margins_weight) != 1.0:
-                col1.markdown('Please ensure that the percentages add up to a 100')
+            sum_of_weights = round((production_weight + material_weight + overheads_margins_weight) * 100, 2)
+            if sum_of_weights != 100.0:
+                col1.markdown(f'Please ensure that the percentages add up to a 100.0. Currently: {sum_of_weights}')
             else:
                 local_content_value = float((production_weight * production_level) + (material_weight * material_level) + (overheads_margins_weight * 1))
-                col2.markdown(f'# Final Percentage: {round(local_content_value * 100, 2)}%')
+                local_content_value = round(local_content_value * 100, 2)
+                col2.markdown(f'# Final Percentage: {local_content_value}%')
         else:
             col1.markdown('Please enter numbers for percentages')
