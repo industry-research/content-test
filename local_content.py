@@ -44,35 +44,35 @@ col1, col2 = st.columns(2)
 with col1:
     # input 1
     production_level = production_values[st.selectbox(
-        "What 'production' is local?",
+        "How much of the production is done within Australia and/or New Zealand? This includes research, design, manufacturing and/or construction.",
         (production_values.keys()),
     )]
 
     # input 2
     material_level = material_values[st.selectbox(
-        "What 'materials level' is local?",
+        "How much of the materials are sourced within Australia and/or New Zealand? This includes raw materials (e.g timber and metals), coatings (e.g solvents and paints) and electric components.",
         (material_values.keys()),
     )]
 
     # inputs 3
-    st.caption("Ratios of item's cost:")
+    st.caption("Ratios of item's cost - should add up to 100.")
     
     production_weight = st.text_input(
-        "Production (percentage)",
+        "What is the percentage of production activities in the total cost of the item?",
         label_visibility=st.session_state.visibility,
         disabled=st.session_state.disabled,
         placeholder=str(33),
     )
 
     material_weight = st.text_input(
-        "Material (percentage)",
+        "What is the percentage of materials in the total cost of the item?",
         label_visibility=st.session_state.visibility,
         disabled=st.session_state.disabled,
         placeholder=str(33),
     )
 
     overheads_margins_weight = st.text_input(
-        "Overheads and Margins (percentage)",
+        "What is the percentage of overheads and margins in the total cost of the item?",
         label_visibility=st.session_state.visibility,
         disabled=st.session_state.disabled,
         placeholder=str(34),
