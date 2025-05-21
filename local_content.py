@@ -29,7 +29,7 @@ material_values = {
     "No local materials (0%)": 0.0,
 }
  
-st.title("ICNVic - Local Content Calculator - External Version")
+st.title("ICN Victoria - LJF Local Content Calculator - Prototype")
 
 # creates a horizontal line
 st.write("---")
