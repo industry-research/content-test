@@ -77,12 +77,12 @@ with col1:
     )
 
     # input good
-    result["manufactured_good"] = st.text_input(
-        "Provide the name of your manufactured good",
+    result["manufactured_good"] = st.selectbox(
+        "Select the name of your manufactured good",
+        ("Door", "Cable", "Transformer"),
         label_visibility=st.session_state.visibility,
         disabled=st.session_state.disabled,
-        placeholder="Door, Window, Cable, Flooring, etc",
-    )
+)
     
     # input good
     result["material"] = st.text_input(
@@ -90,7 +90,7 @@ with col1:
         label_visibility=st.session_state.visibility,
         disabled=st.session_state.disabled,
         placeholder="Timber, concrete..",
-    )
+    )   
     
     # input 1
     production_level = production_values[st.selectbox(
