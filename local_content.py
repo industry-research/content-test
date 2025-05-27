@@ -84,13 +84,13 @@ with col1:
         disabled=st.session_state.disabled,
 )
     
-    # input good
-    result["material"] = st.text_input(
-        "What material is the item made out of? Provide any other relevant details",
-        label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-        placeholder="Timber, concrete..",
-    )   
+    # # input material
+    # result["material"] = st.text_input(
+    #     "What material is the item made out of? Provide any other relevant details",
+    #     label_visibility=st.session_state.visibility,
+    #     disabled=st.session_state.disabled,
+    #     placeholder="Timber, concrete..",
+    # )   
     
     # input 1
     production_level = production_values[st.selectbox(
